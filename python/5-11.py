@@ -18,5 +18,14 @@ def bfs(x, y):
         for i in range(4):
             nx = x + dx[i]
             ny = y + dy[i]
+            if nx < 0 or nx >= n or ny < 0 or ny >= m:
+                continue
+            if graph[nx][ny] == 0:
+                continue
             if graph[nx][ny] == 1:
-                
+                graph[nx][ny] = graph[x][y] + 1 # 최단거리 기록
+                print(graph[nx][ny])
+                queue.append((nx, ny))
+    return graph[n-1][m-1]
+
+print(bfs(0, 0))
