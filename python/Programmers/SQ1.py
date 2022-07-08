@@ -10,10 +10,13 @@ def solution(progresses, speeds):
             arr[i] += 1
     print(arr)
     # 나무 막대 자르기랑 비슷...?
+    complete = 1
     for i in range(len(arr)-1):
-        complete = 1
         if arr[i+1] <= arr[i]:
             complete += 1
-        answer.append(complete)
+        else:
+            answer.append(complete)
+            complete = 1
+    answer.append(complete)
     
     return answer
