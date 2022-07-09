@@ -8,12 +8,12 @@ def solution(progresses, speeds):
         arr.append(j // speeds[i])
         if j % speeds[i] != 0:
             arr[i] += 1
-    print(arr)
-    # 나무 막대 자르기랑 비슷...?
+            
     complete = 1
     for i in range(len(arr)-1):
         if arr[i+1] <= arr[i]:
             complete += 1
+            arr[i+1] = arr[i]
         else:
             answer.append(complete)
             complete = 1
