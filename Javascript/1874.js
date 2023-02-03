@@ -2,11 +2,24 @@ const fs = require("fs");
 const [n, ...input] = fs.readFileSync("./stdin").toString().trim().split("\n");
 
 const stack = [];
-const result = [];
-for (let i = 1, j = 0; i <= n; i++) {
-  if (i === input[j]) {
-    console.log("-");
-  } else {
-    console.log("+");
+let result = "";
+for (let i = 0, cur = 1; i < n; i++) {
+  const num = parseInt(input[i]);
+  while (cur <= num) {
+    stack.push(cur);
+    result += "+";
+    cur += 1;
   }
+  if (stack[stack.length - 1] === num) {
+    stack.pop();
+    result += "-";
+  } else {
+    console.log("NO");
+    result = "";
+    break;
+  }
+}
+
+if (result.length) {
+  result.split("").forEach((str) => console.log(str));
 }
