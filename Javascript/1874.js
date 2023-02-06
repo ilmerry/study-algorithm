@@ -21,5 +21,5 @@ for (let i = 0, cur = 1; i < n; i++) {
 }
 
 if (result.length) {
-  result.split("").forEach((str) => console.log(str));
+  console.log(result.split("").join("\n"));
 }
