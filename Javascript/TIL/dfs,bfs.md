@@ -100,6 +100,13 @@ const bfs = (graph, startNode) => {
 ```
 
 <br/>
+
+## 실전 문제풀이
+
+- 게임맵 최단거리 문제와 같은 동서남북으로만 이동할 수 있는 경우 dx, dy를 선언해 푼다
+- 이때 maps[y][x]의 형태로 풀어야함
+- queue에 push하는 시점에 visited 처리를 해주어야 한다. 안그럼 중복 일어남
+
 ## 참고자료
 
 https://developer-mac.tistory.com/64
