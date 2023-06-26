@@ -1,52 +1,25 @@
 function solution(maps) {
-  var answer = 0;
   const n = maps[0].length;
   const m = maps.length;
-  console.log(maps);
+  const dy = [0, 0, 1, -1];
+  const dx = [-1, 1, 0, 0];
 
-  const bfs = (graph, [startX, startY]) => {
-    const visited = new Set();
-    const queue = [];
+  const queue = [[0, 0, 1]];
 
-    queue.push([startX, startY]);
-    while (queue.length > 0) {
-      const [x, y] = queue.shift();
-      if (!visited.has([x, y])) {
-        //console.log(x, y);
-        visited.add([x, y]);
-        answer += 1;
+  while (queue.length) {
+    const [y, x, step] = queue.shift();
 
-        if (x === n - 1 && y === m - 1) break;
+    if (y === m - 1 && x === n - 1) return step;
 
-        if (x + 1 < n && graph[x + 1][y] === 1) {
-          if (!visited.has([x + 1, y])) {
-            queue.push([x + 1, y]);
-          }
-        } else if (y + 1 < m && graph[x][y + 1] === 1) {
-          if (!visited.has([x, y + 1])) {
-            queue.push([x, y + 1]);
-          }
-        } else if (x - 1 > 0 && graph[x - 1][y] === 1) {
-          if (!visited.has([x - 1, y])) {
-            queue.push([x - 1, y]);
-          }
-        } else if (y - 1 > 0 && graph[x][y - 1] === 1) {
-          if (!visited.has([x, y - 1])) {
-            queue.push([x, y - 1]);
-          }
-        }
+    for (let i = 0; i < 4; i++) {
+      const ny = y + dy[i];
+      const nx = x + dx[i];
+      if (ny >= 0 && ny < m && nx >= 0 && nx < n && maps[ny][nx] === 1) {
+        queue.push([ny, nx, step + 1]);
+        maps[ny][nx] = 0;
       }
     }
+  }
 
-    if (!visited.has([n - 1, m - 1])) {
-      return -1;
-    } else {
-      return answer;
-    }
-  };
-
-  answer = bfs(maps, [0, 0]);
-  console.log(answer);
-
-  return answer;
+  return -1;
 }
