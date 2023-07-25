@@ -1,6 +1,6 @@
-function gcd(a, b) {
+function gcd(num1, num2) {
   // 유클리드 호제법
-  return (num1, num2) => (num2 > 0 ? gcd(num2, num1 % num2) : num1);
+  return num2 > 0 ? gcd(num2, num1 % num2) : num1;
 }
 
 function solution(arr) {
