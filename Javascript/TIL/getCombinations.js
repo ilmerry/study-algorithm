@@ -11,3 +11,17 @@ function getCombinations(arr, selectNumber) {
 
   return results;
 }
+
+function getPermutations(arr, num) {
+  const result = [];
+  if (num === 1) return arr.map((v) => [v]);
+
+  arr.forEach((fixed, index, origin) => {
+    const rest = [...origin.slice(0, index), ...origin.slice(index + 1)];
+    const permutations = getPermutations(rest, num - 1);
+    const attached = permutations.map((permutation) => [fixed, ...permutation]);
+    result.push(...attached);
+  });
+
+  return result;
+}
