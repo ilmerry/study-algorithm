@@ -1,3 +1,4 @@
+// 풀이 참고함
 function solution(numbers) {
   var answer = new Array(numbers.length).fill(-1);
   const stack = [];
