@@ -8,6 +8,10 @@ const [n, ...input] = fs.readFileSync("./stdin").toString().trim().split("\n");
 
 ## 문제풀이 tip
 
+### 그리디
+
+1. max, min과의 비교 -> stack을 사용해보자
+
 ### DP
 
 1. 다이나믹 or 그리디 문제에서 경우의 수가 두 갈래인 경우
